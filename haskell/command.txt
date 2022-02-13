@@ -1,0 +1,5 @@
+//to access prelude
+ghci
+
+//in prelude load haskell files with
+:load fileName
