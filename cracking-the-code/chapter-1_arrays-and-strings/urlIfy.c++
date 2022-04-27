@@ -6,7 +6,29 @@
 
 using namespace std;
 
+string moveUpOne(string s, int i) {
+
+    for(int j = i; j < s.length(); j++) {
+        cout << s[j] << "\n";
+    }
+
+    return s;
+}
+
+string findEmptySpace(string s) {
+    // find first empty space in string
+    for(int i=0; i < s.length(); i++) {
+        if(s[i]==' '){
+            cout << s[i] << "\n";
+        }
+    };
+
+    return s;
+};
+
 string urlIfy(string s) {
+
+    findEmptySpace(s);
 
     return s;
 };
