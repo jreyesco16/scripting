@@ -30,7 +30,6 @@ char* urLify(char* s) {
 
     for (int i = 0; i < strlen(s); i++) {
         if (s[i]==' '){
-            int count = 0;
             s = moveCharsUpOne(s, i);
             s[i] = '%';
             s[i+1] = '2';

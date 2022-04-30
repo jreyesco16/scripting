@@ -1,12 +1,11 @@
-// Date: 04-27-2022
+// Date: 04-30-2022
 //
 // 1.4 Palindrome Permutation: given string, check if it is a permutation of a palindrome
 
-#include <iostream>
+#include <stdio.h>
+#include <string.h>
 
-using namespace std;
-
-int palindromePermutation(string s) {
+int palindromePermutation(char * s) {
 
     return false;
 }
