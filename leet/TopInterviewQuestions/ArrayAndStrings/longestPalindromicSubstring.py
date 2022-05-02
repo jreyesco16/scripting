@@ -2,39 +2,35 @@
 ##
 ##  Description: Given a string s, return the longest palindromic substring in s
 ##  
-##  Stack Overflow citation : 
-##  https://stackoverflow.com/questions/22469997/how-to-get-all-the-contiguous-substrings-of-a-string-in-python
+##  NOT MY SOLUTION! THANK YOU NeetCode (plz subscribe to him) : 
+##  https://www.youtube.com/watch?v=XYQecbcd6_c
 
 class Solution:
-    def sortListByLength(self, list):
-        return sorted(list, key=len, reverse=True)
-
-    def get_all_substrings(self, s: str):
-        length = len(s)
-
-        return [s[i:j + 1] for i in range(length) for j in range(i,length)]
-
-    def isPalindrome(self, s: str) -> bool:
-
-        if (len(s) <= 1):
-            return True
-        
-        # below ''.join(reversed(s)) will reverse s string
-        if (s == ''.join(reversed(s))):
-            return True
-
-        return False
-
     def longestPalindrome(self, s: str) -> str:
-        list = self.get_all_substrings(s)
+        res = ""
+        resLen = 0
 
-        sortedList = self.sortListByLength(list)
+        # using i as a pivot
+        for i in range(len(s)):
+            # odd length
+            l, r = i, i
 
-        for l in sortedList:
-            if(self.isPalindrome(l)):
-                return l     
-
-        return ""
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -= 1
+                r += 1
+            # even length
+            l, r = i, i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -= 1
+                r += 1
+            
+        return res
 
 
 def main():
@@ -44,6 +40,8 @@ def main():
     output = "bab"
 
     result = solution.longestPalindrome(input)
+
+    print("Result: ", result)
 
     if(result == output):
         print("PASSED\n")
