@@ -1,17 +1,40 @@
 ##  Longest Palindromic Substring
 ##
 ##  Description: Given a string s, return the longest palindromic substring in s
-## 
-##  Input: s = "babad"
-##  Output: "bab"
-##  Explanation: "aba" is also a valid answer.
+##  
+##  Stack Overflow citation : 
+##  https://stackoverflow.com/questions/22469997/how-to-get-all-the-contiguous-substrings-of-a-string-in-python
 
 class Solution:
+    def sortListByLength(self, list):
+        return sorted(list, key=len, reverse=True)
+
+    def get_all_substrings(self, s: str):
+        length = len(s)
+
+        return [s[i:j + 1] for i in range(length) for j in range(i,length)]
+
+    def isPalindrome(self, s: str) -> bool:
+
+        if (len(s) <= 1):
+            return True
+        
+        # below ''.join(reversed(s)) will reverse s string
+        if (s == ''.join(reversed(s))):
+            return True
+
+        return False
+
     def longestPalindrome(self, s: str) -> str:
-        
-        # do magic here
-        
-        return s
+        list = self.get_all_substrings(s)
+
+        sortedList = self.sortListByLength(list)
+
+        for l in sortedList:
+            if(self.isPalindrome(l)):
+                return l     
+
+        return ""
 
 
 def main():
