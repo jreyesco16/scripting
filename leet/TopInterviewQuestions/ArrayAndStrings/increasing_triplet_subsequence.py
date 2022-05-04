@@ -6,48 +6,29 @@
 
 class Solution:
     def increasingTriplet(self, nums: list[int]) -> bool:
-        n = len(nums)
+        minTmp = 100*100
+        medTmp = 100*100
+        # max = 0
 
-        if (n < 3):
-            return False
+        for i in range(len(nums)):
+         
+            if (nums[i] < minTmp):
+                minTmp = nums[i]
+            elif (minTmp < nums[i] and nums[i] < medTmp):
+                medTmp = nums[i]
+            else:
+                return True
 
-
-        for i in range(len(nums)-2):
-            print("New iteration starting with nums[i]: ", nums[i])
-            count = 0
-
-            # create pivots
-            j = i+1
-            k = n-1
-
-            print("j: ", j)
-            print("k: ", k)
-
-            while(j < k):
-
-                print("Curent values: nums[i]: {0} nums[j]: {1} nums[k]: {2}".format(nums[i], nums[j], nums[k]))
-
-                # condition is met
-                if(nums[i] < nums[j] and nums[j] < nums[k]):
-                    return True
-                # j < i
-                elif(nums[j] < nums[i]):
-                    j += 1
-                # j < i and j < k
-                elif(nums[k] < nums[i]):
-                    k -= 1
-                else:
-                    j += 1
-
+            print("New Iteration - minTmp: {0}\tmedTmp: {1}\tcurrValue: {2}".format(minTmp, medTmp, nums[i]))
+        
         return False
         
 
 
 def main():
+    input = [0,4,2,1,0,-1,-3]
 
-    input = [1,6,2,5,1]
-
-    output = True
+    output = False
 
     solution = Solution()
 
