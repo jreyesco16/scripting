@@ -12,21 +12,10 @@ class Solution:
     def maxProfit(self, prices: list[int]) -> int:
         profit = 0
 
-        holding = 0
-
-        for i in range(0, len(prices)):
-            # edge cases for 0
-            if i == 0:
-                holding = prices[i]
-                profit -= holding
-                continue
-
-            # check if we have a better deal today
-            if holding >= prices[i]:
-                profit += holding
-                holding = prices[i]
-            else:
-                print("hello, world")
+        for i in range(1, len(prices)):
+            
+            if prices[i-1] < prices[i]:
+                profit += prices[i]-prices[i-1]
 
         return profit
 
